@@ -36,14 +36,14 @@ export default function Header() {
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
+          <Link href="/" className={cn("flex items-center gap-2 text-xl font-headline font-bold", isScrolled ? "text-primary" : "text-white")}>
             <Gem className="h-6 w-6 text-accent" />
             <span>Studio Contabile Cittarelli</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={cn("text-sm font-medium transition-colors", isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/80 hover:text-white")}>
+              <Link key={link.href} href={link.href} className={cn("text-base font-medium transition-colors", isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/80 hover:text-white")}>
                 {link.label}
               </Link>
             ))}
