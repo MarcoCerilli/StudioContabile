@@ -24,7 +24,7 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
           </div>
           <div className="lg:order-first">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold">Dr.ssa Elisa Rossi</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold">Dr.ssa Francesca Cittarelli</h2>
             <p className="mt-2 text-xl text-primary font-semibold">Commercialista e Revisore Legale</p>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               Con oltre 15 anni di esperienza nel settore, offro una consulenza personalizzata che va oltre i semplici numeri. La mia missione è essere un partner strategico per i miei clienti, aiutandoli a raggiungere i loro obiettivi finanziari e di business con chiarezza e sicurezza.

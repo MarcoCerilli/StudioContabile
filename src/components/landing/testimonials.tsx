@@ -16,7 +16,7 @@ import type { Testimonial } from '@/lib/types';
 const testimonialsData: Testimonial[] = [
   {
     id: 't1',
-    quote: "Elisa ha trasformato la gestione fiscale della mia startup. Professionale, disponibile e incredibilmente competente. Non potrei chiedere di meglio.",
+    quote: "Francesca ha trasformato la gestione fiscale della mia startup. Professionale, disponibile e incredibilmente competente. Non potrei chiedere di meglio.",
     name: 'Marco Bianchi',
     role: 'CEO di Innovatech Srl',
     image: {

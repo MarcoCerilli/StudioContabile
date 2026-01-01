@@ -11,7 +11,7 @@ export default function Footer() {
               <Gem className="h-6 w-6 text-accent" />
               <span>Accounting Ace</span>
             </Link>
-            <p className="mt-2 text-sm text-primary-foreground/80">Dr.ssa Elisa Rossi <br/> P.IVA 12345678901</p>
+            <p className="mt-2 text-sm text-primary-foreground/80">Dr.ssa Francesca Cittarelli <br/> P.IVA 12345678901</p>
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold mb-4">Link Utili</h3>
