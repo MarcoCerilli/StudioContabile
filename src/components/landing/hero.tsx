@@ -18,9 +18,9 @@ export default function Hero() {
           priority
         />
       )}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70" />
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold leading-tight tracking-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold leading-tight tracking-tight text-white">
           Il Tuo Studio Contabile di Fiducia a Terracina
         </h1>
         <p className="mt-4 text-lg font-body">di Francesca Cittarelli</p>

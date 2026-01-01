@@ -81,8 +81,8 @@ export default function Testimonials() {
                           <Image
                             src={testimonial.image.url}
                             alt={`Foto di ${testimonial.name}`}
-                            width={48}
-                            height={48}
+                            width={40}
+                            height={40}
                             className="rounded-full object-cover"
                             data-ai-hint={testimonial.image.hint}
                           />
