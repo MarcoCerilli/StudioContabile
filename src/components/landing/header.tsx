@@ -43,7 +43,7 @@ export default function Header() {
 
           <nav className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+              <Link key={link.href} href={link.href} className={cn("text-sm font-medium transition-colors", isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/80 hover:text-white")}>
                 {link.label}
               </Link>
             ))}
