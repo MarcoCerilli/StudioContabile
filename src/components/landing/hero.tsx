@@ -21,8 +21,9 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/60" />
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold leading-tight tracking-tight">
-          La Tua Bussola nel Mondo Fiscale e Finanziario
+          Il Tuo Studio Contabile di Fiducia a Terracina
         </h1>
+        <p className="mt-4 text-lg font-body">di Francesca Cittarelli</p>
         <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-primary-foreground/90">
           Esperienza e professionalità al tuo servizio per navigare con sicurezza tra normative fiscali e opportunità finanziarie.
         </p>

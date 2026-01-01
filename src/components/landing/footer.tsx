@@ -7,9 +7,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
-            <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold">
+            <Link href="/" className="flex items-center gap-2 text-xl font-headline font-bold">
               <Gem className="h-6 w-6 text-accent" />
-              <span>Accounting Ace</span>
+              <span>Studio Contabile Cittarelli</span>
             </Link>
             <p className="mt-2 text-sm text-primary-foreground/80">Dr.ssa Francesca Cittarelli <br/> P.IVA 12345678901</p>
           </div>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} Accounting Ace. Tutti i diritti riservati.</p>
+          <p>&copy; {new Date().getFullYear()} Studio Contabile Cittarelli. Tutti i diritti riservati.</p>
           <p className="mt-1">Sito web realizzato con orgoglio.</p>
         </div>
       </div>

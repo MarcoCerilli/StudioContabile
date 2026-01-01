@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Accounting Ace',
-  description: 'Consulenza fiscale e finanziaria professionale per il tuo business.',
+  title: 'Studio Contabile Cittarelli - Terracina',
+  description: 'Studio contabile e di consulenza fiscale e finanziaria a Terracina. Gestito dalla Dr.ssa Francesca Cittarelli, offriamo servizi professionali per aziende e privati.',
 };
 
 export default function RootLayout({

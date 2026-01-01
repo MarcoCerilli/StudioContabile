@@ -36,9 +36,9 @@ export default function Header() {
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
+          <Link href="/" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
             <Gem className="h-6 w-6 text-accent" />
-            <span>Accounting Ace</span>
+            <span>Studio Contabile Cittarelli</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-6">
@@ -67,7 +67,7 @@ export default function Header() {
                 <div className="flex flex-col space-y-6 pt-10">
                   <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
                     <Gem className="h-6 w-6 text-accent" />
-                    <span>Accounting Ace</span>
+                    <span>Studio Contabile Cittarelli</span>
                   </Link>
                   <nav className="flex flex-col space-y-4">
                   {navLinks.map((link) => (
