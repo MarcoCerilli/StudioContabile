@@ -10,18 +10,20 @@ export default function About() {
     <section id="chi-sono" className="py-20 lg:py-32 bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-2xl transform lg:rotate-[-3deg] transition-transform duration-500 hover:rotate-0">
-            {bioImage && (
-              <Image
-                src={bioImage.imageUrl}
-                alt={bioImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={bioImage.imageHint}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
+          <div className="flex justify-center items-center">
+            <div className="relative w-full max-w-sm aspect-[3/4] rounded-lg overflow-hidden shadow-2xl transform lg:rotate-[-3deg] transition-transform duration-500 hover:rotate-0">
+              {bioImage && (
+                <Image
+                  src={bioImage.imageUrl}
+                  alt={bioImage.description}
+                  fill
+                  className="object-cover"
+                  data-ai-hint={bioImage.imageHint}
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
+            </div>
           </div>
           <div className="lg:order-first">
             <h2 className="text-3xl md:text-4xl font-headline font-bold">Dr.ssa Francesca Cittarelli</h2>
