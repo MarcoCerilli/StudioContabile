@@ -34,7 +34,7 @@ const generateBlogContentFlow = ai.defineFlow(
     inputSchema: GenerateBlogContentInputSchema,
     outputSchema: GenerateBlogContentOutputSchema,
   },
-  async input => {
+  async (input) => {
     const llmResponse = await ai.generate({
       prompt: `Sei un esperto di contenuti per blog specializzato in contabilità, leggi fiscali e regolamenti finanziari.
 
@@ -49,8 +49,7 @@ const generateBlogContentFlow = ai.defineFlow(
       `,
       model: 'googleai/gemini-1.5-flash',
       config: {
-        // Higher temperature for more creative content
-        temperature: 0.8,
+        temperature: 0.7,
       },
     });
 
@@ -60,7 +59,6 @@ const generateBlogContentFlow = ai.defineFlow(
       throw new Error('Failed to generate blog content from the AI model.');
     }
 
-    // Capitalize the first letter of the topic for the title
     const title = input.topic.charAt(0).toUpperCase() + input.topic.slice(1);
 
     return {
