@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Gem } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -64,6 +64,9 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
+                <SheetHeader>
+                  <SheetTitle className="sr-only">Menu Principale</SheetTitle>
+                </SheetHeader>
                 <div className="flex flex-col space-y-6 pt-10">
                   <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
                     <Gem className="h-6 w-6 text-accent" />
