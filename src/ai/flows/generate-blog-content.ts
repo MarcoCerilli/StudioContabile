@@ -39,7 +39,7 @@ const generateBlogContentPrompt = ai.definePrompt({
   Keywords: {{{keywords}}}
 
   The blog post should be informative, engaging, and provide valuable insights to potential clients.
-  
+
   ONLY return the content of the blog post, not the title.
   `,
 });
@@ -52,7 +52,7 @@ const generateBlogContentFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await generateBlogContentPrompt(input);
-    const content = output;
+    const content = output as string;
     
     if (!content) {
       throw new Error('Failed to generate blog content.');
