@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Loader2, Send } from 'lucide-react';
+import { Loader2, Send, Mail, Phone, MapPin, Inbox } from 'lucide-react';
 
 function ContactSubmitButton() {
   const { pending } = useFormStatus();
@@ -55,15 +55,38 @@ export default function Contact() {
     }
   }, [state, toast]);
 
+  const contactDetails = [
+    { icon: MapPin, text: 'Via Alessandro Manzoni 35, Terracina', href: 'https://www.google.com/maps/search/?api=1&query=Via+Alessandro+Manzoni+35+Terracina' },
+    { icon: Phone, text: '0773 702972', href: 'tel:0773702972' },
+    { icon: Mail, text: 'studiocittarelli@gmail.com', href: 'mailto:studiocittarelli@gmail.com' },
+    { icon: Inbox, text: 'francesca.cittarelli@altapec.it', href: 'mailto:francesca.cittarelli@altapec.it' },
+  ];
+
   return (
     <section id="contatti" className="py-20 lg:py-32 bg-card">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto grid lg:grid-cols-2 gap-12">
+        <div className="flex flex-col justify-center">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold">Contatti Diretti</h2>
+            <p className="mt-4 text-muted-foreground">
+              Preferisci un contatto diretto? Qui trovi tutti i miei recapiti. Sarò felice di risponderti al più presto.
+            </p>
+            <div className="mt-8 space-y-4">
+              {contactDetails.map((detail, index) => (
+                <a key={index} href={detail.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                  <div className="bg-accent/20 p-3 rounded-full group-hover:bg-accent/40 transition-colors">
+                    <detail.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground group-hover:text-primary transition-colors">{detail.text}</span>
+                </a>
+              ))}
+            </div>
+          </div>
           <Card className="shadow-lg">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl md:text-4xl font-headline font-bold">Contattami</CardTitle>
+            <CardHeader className="text-center lg:text-left">
+              <CardTitle className="text-3xl md:text-4xl font-headline font-bold">Scrivimi</CardTitle>
               <CardDescription className="mt-2 text-lg">
-                Hai una domanda o vuoi richiedere una consulenza? Compila il modulo qui sotto.
+                Hai una domanda o vuoi una consulenza? Compila il modulo.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -88,6 +111,7 @@ export default function Contact() {
               </form>
             </CardContent>
           </Card>
+          
         </div>
       </div>
     </section>

@@ -28,30 +28,42 @@ export async function generateBlogContent(input: GenerateBlogContentInput): Prom
   return generateBlogContentFlow(input);
 }
 
-const generateBlogContentPrompt = ai.definePrompt({
-  name: 'generateBlogContentPrompt',
-  input: {schema: GenerateBlogContentInputSchema},
-  output: {schema: GenerateBlogContentOutputSchema},
-  prompt: `You are an expert blog content writer specializing in accounting, tax laws, and financial regulations.
-
-  Generate a blog post with the following topic and keywords.
-
-  Topic: {{{topic}}}
-  Keywords: {{{keywords}}}
-
-  The blog post should be informative, engaging, and provide valuable insights to potential clients.
-  Return the title and content of the blog post.
-  `,
-});
-
 const generateBlogContentFlow = ai.defineFlow(
   {
     name: 'generateBlogContentFlow',
     inputSchema: GenerateBlogContentInputSchema,
     outputSchema: GenerateBlogContentOutputSchema,
   },
-  async input => {
-    const {output} = await generateBlogContentPrompt(input);
-    return output!;
+  async (input) => {
+    const llmResponse = await ai.generate({
+      prompt: `Sei un esperto di contenuti per blog specializzato in contabilità, leggi fiscali e regolamenti finanziari.
+
+      Genera un post per un blog con il seguente argomento e parole chiave.
+
+      Argomento: ${input.topic}
+      Parole chiave: ${input.keywords}
+
+      Il post del blog deve essere informativo, coinvolgente e fornire spunti preziosi ai potenziali clienti.
+
+      RESTITUISCI SOLO IL CONTENUTO del post, non il titolo.
+      `,
+      model: 'googleai/gemini-1.5-flash',
+      config: {
+        temperature: 0.7,
+      },
+    });
+
+    const content = llmResponse.text;
+
+    if (!content) {
+      throw new Error('Failed to generate blog content from the AI model.');
+    }
+
+    const title = input.topic.charAt(0).toUpperCase() + input.topic.slice(1);
+
+    return {
+      title,
+      content,
+    };
   }
 );
