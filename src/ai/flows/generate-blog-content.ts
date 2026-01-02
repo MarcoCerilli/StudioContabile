@@ -51,8 +51,21 @@ const generateBlogContentFlow = ai.defineFlow(
     outputSchema: GenerateBlogContentOutputSchema,
   },
   async input => {
-    const {output} = await generateBlogContentPrompt(input);
-    const content = output as string;
+    const response = await ai.generate({
+      prompt: `You are an expert blog content writer specializing in accounting, tax laws, and financial regulations.
+
+      Generate a blog post with the following topic and keywords.
+
+      Topic: ${input.topic}
+      Keywords: ${input.keywords}
+
+      The blog post should be informative, engaging, and provide valuable insights to potential clients.
+
+      ONLY return the content of the blog post, not the title.
+      `,
+    });
+
+    const content = response.text;
     
     if (!content) {
       throw new Error('Failed to generate blog content.');
