@@ -1,27 +1,30 @@
 import Link from 'next/link';
-import { Gem, Linkedin, Facebook, Twitter } from 'lucide-react';
+import { Gem, Linkedin, Facebook, Twitter, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
+        <div className="grid md:grid-cols-4 gap-8 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start md:col-span-2">
             <Link href="/" className="flex items-center gap-2 text-xl font-headline font-bold">
               <Gem className="h-6 w-6 text-accent" />
               <span>Studio Contabile Cittarelli</span>
             </Link>
-            <p className="mt-2 text-sm text-primary-foreground/80">Dr.ssa Francesca Cittarelli <br/> P.IVA 12345678901</p>
+            <p className="mt-2 text-sm text-primary-foreground/80">Dr.ssa Francesca Cittarelli</p>
+            <p className="mt-1 text-sm text-primary-foreground/80">P.IVA 03076350598</p>
+            <p className="mt-1 text-sm text-primary-foreground/80">C.F. CTTFNC76A70L120H</p>
           </div>
+          
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-bold mb-4">Link Utili</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link href="#servizi" className="text-sm text-primary-foreground/80 hover:text-white">Servizi</Link>
-              <Link href="#chi-sono" className="text-sm text-primary-foreground/80 hover:text-white">Chi Sono</Link>
-              <Link href="#faq" className="text-sm text-primary-foreground/80 hover:text-white">FAQ</Link>
-              <Link href="#contatti" className="text-sm text-primary-foreground/80 hover:text-white">Contatti</Link>
-            </nav>
+            <h3 className="font-bold mb-4">Contatti</h3>
+            <div className="flex flex-col space-y-2 text-sm text-primary-foreground/80">
+              <span className="flex items-center gap-2 justify-center md:justify-start"><MapPin className="h-4 w-4"/> Via A. Manzoni 35, Terracina</span>
+              <a href="tel:0773702972" className="flex items-center gap-2 hover:text-white justify-center md:justify-start"><Phone className="h-4 w-4"/> 0773 702972</a>
+              <a href="mailto:studiocittarelli@gmail.com" className="flex items-center gap-2 hover:text-white justify-center md:justify-start"><Mail className="h-4 w-4"/> studiocittarelli@gmail.com</a>
+            </div>
           </div>
+
           <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold mb-4">Seguimi su</h3>
             <div className="flex space-x-4">
