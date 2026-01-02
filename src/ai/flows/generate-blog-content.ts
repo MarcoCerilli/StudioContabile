@@ -28,22 +28,6 @@ export async function generateBlogContent(input: GenerateBlogContentInput): Prom
   return generateBlogContentFlow(input);
 }
 
-const generateBlogContentPrompt = ai.definePrompt({
-  name: 'generateBlogContentPrompt',
-  input: {schema: GenerateBlogContentInputSchema},
-  prompt: `You are an expert blog content writer specializing in accounting, tax laws, and financial regulations.
-
-  Generate a blog post with the following topic and keywords.
-
-  Topic: {{{topic}}}
-  Keywords: {{{keywords}}}
-
-  The blog post should be informative, engaging, and provide valuable insights to potential clients.
-
-  ONLY return the content of the blog post, not the title.
-  `,
-});
-
 const generateBlogContentFlow = ai.defineFlow(
   {
     name: 'generateBlogContentFlow',
@@ -51,26 +35,31 @@ const generateBlogContentFlow = ai.defineFlow(
     outputSchema: GenerateBlogContentOutputSchema,
   },
   async input => {
-    const response = await ai.generate({
-      prompt: `You are an expert blog content writer specializing in accounting, tax laws, and financial regulations.
+    const llmResponse = await ai.generate({
+      prompt: `Sei un esperto di contenuti per blog specializzato in contabilità, leggi fiscali e regolamenti finanziari.
 
-      Generate a blog post with the following topic and keywords.
+      Genera un post per un blog con il seguente argomento e parole chiave.
 
-      Topic: ${input.topic}
-      Keywords: ${input.keywords}
+      Argomento: ${input.topic}
+      Parole chiave: ${input.keywords}
 
-      The blog post should be informative, engaging, and provide valuable insights to potential clients.
+      Il post del blog deve essere informativo, coinvolgente e fornire spunti preziosi ai potenziali clienti.
 
-      ONLY return the content of the blog post, not the title.
+      RESTITUISCI SOLO IL CONTENUTO del post, non il titolo.
       `,
+      model: 'googleai/gemini-1.5-flash',
+      config: {
+        // Higher temperature for more creative content
+        temperature: 0.8,
+      },
     });
 
-    const content = response.text;
-    
+    const content = llmResponse.text;
+
     if (!content) {
-      throw new Error('Failed to generate blog content.');
+      throw new Error('Failed to generate blog content from the AI model.');
     }
-    
+
     // Capitalize the first letter of the topic for the title
     const title = input.topic.charAt(0).toUpperCase() + input.topic.slice(1);
 
