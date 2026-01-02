@@ -18,32 +18,44 @@ const navLinks = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) {
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isClient]);
+
+  const scrolledClass = isClient && isScrolled;
 
   return (
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-card/95 shadow-md backdrop-blur-sm" : "bg-transparent"
+      scrolledClass ? "bg-card/95 shadow-md backdrop-blur-sm" : "bg-transparent"
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className={cn("flex items-center gap-2 text-xl font-headline font-bold", isScrolled ? "text-primary" : "text-white")}>
+          <Link href="/" className={cn("flex items-center gap-2 text-xl font-headline font-bold", scrolledClass ? "text-primary" : "text-white")}>
             <Gem className="h-6 w-6 text-accent" />
             <span>Studio Contabile Cittarelli</span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={cn("text-base font-medium transition-colors", isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/80 hover:text-white")}>
+              <Link key={link.href} href={link.href} className={cn("text-base font-medium transition-colors", scrolledClass ? "text-foreground/80 hover:text-primary" : "text-white/80 hover:text-white")}>
                 {link.label}
               </Link>
             ))}
