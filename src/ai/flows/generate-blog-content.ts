@@ -31,7 +31,6 @@ export async function generateBlogContent(input: GenerateBlogContentInput): Prom
 const generateBlogContentPrompt = ai.definePrompt({
   name: 'generateBlogContentPrompt',
   input: {schema: GenerateBlogContentInputSchema},
-  output: {schema: GenerateBlogContentOutputSchema},
   prompt: `You are an expert blog content writer specializing in accounting, tax laws, and financial regulations.
 
   Generate a blog post with the following topic and keywords.
@@ -40,7 +39,8 @@ const generateBlogContentPrompt = ai.definePrompt({
   Keywords: {{{keywords}}}
 
   The blog post should be informative, engaging, and provide valuable insights to potential clients.
-  Return the title and content of the blog post.
+  
+  ONLY return the content of the blog post, not the title.
   `,
 });
 
@@ -52,6 +52,18 @@ const generateBlogContentFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await generateBlogContentPrompt(input);
-    return output!;
+    const content = output;
+    
+    if (!content) {
+      throw new Error('Failed to generate blog content.');
+    }
+    
+    // Capitalize the first letter of the topic for the title
+    const title = input.topic.charAt(0).toUpperCase() + input.topic.slice(1);
+
+    return {
+      title,
+      content,
+    };
   }
 );
